@@ -27,6 +27,7 @@ def check_weez():
         page.wait_for_timeout(15000)  # attendre le chargement JS
         content = page.content()
         nb_indispo = content.count("Indisponible")
+        print(f"Nombre d'Indisponible détecté : {nb_indispo}")
 
 
         if nb_indispo < 7:
