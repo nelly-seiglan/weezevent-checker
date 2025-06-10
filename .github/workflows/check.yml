@@ -3,7 +3,7 @@ name: Check for ticket availability
 on:
   schedule:
     - cron: '*/30 * * * *'  # toutes les 30 minutes
-  workflow_dispatch:        # permet aussi de le lancer manuellement
+  workflow_dispatch:        # exécutable manuellement
 
 jobs:
   check:
@@ -23,6 +23,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python -m playwright install
+          python -m playwright install chromium
 
       - name: Run script
         run: python main.py
+
+      - name: Upload screenshot
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: widget-screenshot
+          path: screenshot.png
