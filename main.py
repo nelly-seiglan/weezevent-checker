@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from playwright.sync_api import sync_playwright
 
 EMAIL = "nelly.sgn@gmail.com"
-EMAIL_APP_PASSWORD = "brau ymep ehfjj rpqd"
+EMAIL_APP_PASSWORD = "brauymepehfjjrpqd"
 
 
 def send_email():
