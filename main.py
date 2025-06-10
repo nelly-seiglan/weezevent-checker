@@ -22,9 +22,9 @@ def check_weez():
         page = context.new_page()
 
         page.goto("https://widget.weezevent.com/ticket/revente-coucool25?locale=fr-FR", timeout=60000)
-        page.wait_for_timeout(15000)
+        page.wait_for_timeout(20000)  # on attend 20 secondes pour être sûr que tout est chargé
 
-        content = page.content()
+        content = page.inner_text("body")  # ici on prend le texte visible à l'écran
         nb_indispo = content.count("Indisponible")
         print(f"Nombre d'Indisponible détecté : {nb_indispo}")
 
@@ -35,4 +35,5 @@ def check_weez():
 
 if __name__ == "__main__":
     check_weez()
+
 
