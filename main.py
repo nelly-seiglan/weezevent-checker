@@ -26,8 +26,10 @@ def check_weez():
         page.goto("https://widget.weezevent.com/ticket/revente-coucool25?locale=fr-FR", timeout=60000)
         page.wait_for_timeout(15000)  # attendre le chargement JS
         content = page.content()
+        nb_indispo = content.count("Indisponible")
 
-        if "Aucune place disponible" not in content:
+
+        if nb_indispo < 7:
             send_email()
 
         browser.close()
